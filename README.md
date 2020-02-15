@@ -13,7 +13,7 @@ In the factory, the silicon slice is conveyed by the conveyor belt. Above the be
 1. check the position of the silicon slice
 the slice may have 6 types of positions, as is shown in the following table:
 top|middle|bottom|returned value|types
-:-:|:-:|:-:|:-:
+:-:|:-:|:-:|:-:|:-:
 1|0|0|1|1
 1|1|0|2|2
 0|1|0|3|3
