@@ -12,14 +12,14 @@ brew install opencv
 In the factory, the silicon slice is conveyed by the conveyor belt. Above the belt is a camera. 
 1. check the position of the silicon slice
 the slice may have 6 types of positions, as is shown in the following table:
-|top|middle|bottom|returned value|types|
-|:-:|:-:|:-:|:-:|
-|1|0|0|1|1|
-|1|1|0|2|2|
-|0|1|0|3|3|
-|0|1|1|4|4|
-|0|0|1|5|5|
-|0|0|0|6|6|
+top|middle|bottom|returned value|types
+:-:|:-:|:-:|:-:
+1|0|0|1|1
+1|1|0|2|2
+0|1|0|3|3
+0|1|1|4|4
+0|0|1|5|5
+0|0|0|6|6
 ![](images/position.png)
 So when the camera shoots a pic and input it into the system, if the pic is type 1-3, then we get into the next step, else we don't have to check since the silicon slice is conveyed on the belt from top to bottom. So we can know whether the slice has problems just by checking the type 1-3 pics.
 2. get the left edge and right edge
