@@ -24,12 +24,15 @@ the slice may have 6 types of positions, as is shown in the following table:
 
 ![](images/position.png)
 So when the camera shoots a pic and input it into the system, if the pic is type 1-3, then we get into the next step, else we don't have to check since the silicon slice is conveyed on the belt from top to bottom. So we can know whether the slice has problems just by checking the type 1-3 pics.
+
 2. get the left edge and right edge
 we can see black pixel in the right and left edge. These edges will affect our detection. So we should decide the start point of detecting the boundary edge.
+
 3. get the coordinates of all four vertexes
 if pos = 1, then we can get the top vertexes' coordinates easily. and then get the bottom twos
 if pos = 2, it's similar
 if pos = 3, it became complex. First, we should detect the top vertex. if we first get the right top vertex, then we know the slice is rotating counterclockwise; if we first get the left top vertex, then we know the slice is rotating clockwise. According to different conditions, we use different methods to get all these vertexes.
+
 4. calculate the length of each side
 we have already get the four vertexes, so we can use them to calculate the length of each side. e.g. topLength = length(topRightV) - length(topLeftV)
 
