@@ -153,7 +153,7 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i - 2, j) == 0) j--;
                         while (img.at<uchar>(i - 3, j) == 0) j--;
                         vertex[3][0] = i;
-                        vextex[3][0] = j;
+                        vertex[3][0] = j;
                         for (int k = rightEdge; k > WIDTH / 2; k--) {
                             for (int l = HEIGHT / 2; l > 1; l--) {
                                 if (img.at<uchar>(l + 1, k) == 250 && img.at<uchar>(l, k) == 0) {
@@ -175,7 +175,7 @@ void vertexDetection(Mat img, int pos) {
         if (endFor == 1) {
             for (int j = leftEdge; j < WIDTH / 2; j++) {
                 for (int i = HEIGHT / 2; i > 1; i--) {
-                    if (img.at<uchar>(i + 1, j) == 250 img.at<uchar>(i, j) == 0) {
+                    if (img.at<uchar>(i + 1, j) == 250 && img.at<uchar>(i, j) == 0) {
                         while (img.at<uchar>(i, j + 1) == 0) i++;
                         while (img.at<uchar>(i, j + 2) == 0) i++;
                         while (img.at<uchar>(i, j + 3) == 0) i++;
@@ -207,7 +207,7 @@ void vertexDetection(Mat img, int pos) {
         int endFor = 0;
         for (int i = HEIGHT - 5; i > HEIGHT / 2 && endFor == 0; i--) {
 
-            for (int i = rightEdge; j > leftEdge; j--) {
+            for (int j = rightEdge; j > leftEdge; j--) {
                 if (img.at<uchar>(i, j) == 0 && img.at<uchar>(i, j + 1) == 250) {
                     if (j > WIDTH / 2) {
                         while (img.at<uchar>(i - 1, j) == 0) j++;
@@ -259,7 +259,7 @@ void vertexDetection(Mat img, int pos) {
     } else if (pos == 3) {
         int endFor = 0;
         // detect the left/right vertex
-        for (int i = 1; i < HEIGH / 2 && endFor == 0; i++) {
+        for (int i = 1; i < HEIGHT / 2 && endFor == 0; i++) {
             for (int j = leftEdge; j < rightEdge; j++) {
                 if (img.at<uchar>(i, j - 1) == 250 && img.at<uchar>(i, j) == 0) {
                     if (j > WIDTH / 2) { // right vertex
@@ -277,8 +277,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i + 2, j) == 0)j--;
                         while (img.at<uchar>(i + 3, j) == 0)j--;
                         while (img.at<uchar>(i + 4, j) == 0)j--;
-                        ver[0][0] = i;
-                        ver[0][1] = j;
+                        vertex[0][0] = i;
+                        vertex[0][1] = j;
                         endFor = 2;
                         break;
                     }
@@ -293,8 +293,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i, j + 2) == 0) { i--; }
                         while (img.at<uchar>(i, j + 3) == 0) { i--; }
                         while (img.at<uchar>(i, j + 4) == 0) { i--; }
-                        ver[0][0] = i;
-                        ver[0][1] = j;
+                        vertex[0][0] = i;
+                        vertex[0][1] = j;
                         endFor = 3; // anticlockwise rotation
                         break;
                     }
@@ -309,8 +309,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i, j - 2) == 0)i--;
                         while (img.at<uchar>(i, j - 3) == 0)i--;
                         while (img.at<uchar>(i, j - 4) == 0)i--;
-                        ver[1][0] = i;
-                        ver[1][1] = j;
+                        vertex[1][0] = i;
+                        vertex[1][1] = j;
                         endFor = 4; // clockwise rotation
                         break;
                     }
@@ -327,8 +327,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i, j - 2) == 0)i++;
                         while (img.at<uchar>(i, j - 3) == 0)i++;
                         while (img.at<uchar>(i, j - 4) == 0)i++;
-                        ver[2][0] = i;
-                        ver[2][1] = j;
+                        vertex[2][0] = i;
+                        vertex[2][1] = j;
                         endFor = 0;
                         break;
                     }
@@ -342,8 +342,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i - 2, j) == 0) { j--; }
                         while (img.at<uchar>(i - 3, j) == 0) { j--; }
                         while (img.at<uchar>(i - 4, j) == 0) { j--; }
-                        ver[3][0] = i;
-                        ver[3][1] = j;
+                        vertex[3][0] = i;
+                        vertex[3][1] = j;
                         return;
                     }
                 }
@@ -358,8 +358,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i - 2, j) == 0)j++;
                         while (img.at<uchar>(i - 3, j) == 0)j++;
                         while (img.at<uchar>(i - 4, j) == 0)j++;
-                        ver[2][0] = i;
-                        ver[2][1] = j;
+                        vertex[2][0] = i;
+                        vertex[2][1] = j;
                         endFor = 0;
                         break;
                     }
@@ -373,8 +373,8 @@ void vertexDetection(Mat img, int pos) {
                         while (img.at<uchar>(i, j + 2) == 0)i++;
                         while (img.at<uchar>(i, j + 3) == 0)i++;
                         while (img.at<uchar>(i, j + 4) == 0)i++;
-                        ver[3][0] = i;
-                        ver[3][1] = j;
+                        vertex[3][0] = i;
+                        vertex[3][1] = j;
                         return;
                     }
                 }
@@ -390,12 +390,13 @@ int allDetection(Mat img, int pos) {
         calLength(); // calculate the length of all sides
         lenFlag = checkLength();
         if (lenFlag != 0) {
-            return lenFLag;
+            return lenFlag;
         }
         
 
         
     }
+    return 0;
 }
 void calLength() {
     topLength = vertex[1][1] - vertex[0][1];
@@ -445,7 +446,7 @@ int main() {
         }
     }
 
-    int allFlag = allDetection(pos, dstimage); // detection
+    int allFlag = allDetection(dst, pos); // detection
 
 
     /* Detect silicon slice end */
