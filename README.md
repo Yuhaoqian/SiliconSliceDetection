@@ -34,10 +34,47 @@ if pos = 2, it's similar
 if pos = 3, it became complex. First, we should detect the top vertex. if we first get the right top vertex, then we know the slice is rotating counterclockwise; if we first get the left top vertex, then we know the slice is rotating clockwise. According to different conditions, we use different methods to get all these vertexes.
 
 4. calculate the length of each side
-we have already get the four vertexes, so we can use them to calculate the length of each side. e.g. topLength = length(topRightV) - length(topLeftV)
+    we have already get the four vertexes, so we can use them to calculate the length of each side. e.g. topLength = length(topRightV) - length(topLeftV)
+
+5. compare parallel sides' lengths
+   left and right length doesn't match, return 1
+   top and bottom length doesn't match, return 2
+
+6. edge extraction
+save the coordinates of lines in arrays: topEdge[WIDTH], bottomEdge[WIDTH], leftEdge[HEIGHT], rightEdge[HEIGHT]
+
+7. fit line
+Calculate the slope and intercept of each side by vertexes' coordinates
+
+8. check each side
+check each side.
+e.g. check right side
+we now know the linear equation of two vertexes, so we can use the equation to estimate the value X  given value Y
+if 3 continuous Xestimate - Xactucal > DEPTH(which is a mesurement of the silicon slice), the slice is unqualified.
+
+Different error will return different values, as is shown in the following table:
+
+Error type|return value
+:-:|:-:
+The silicon slice is qualified|0
+left and right length doesn't match|1
+top and bottom length doesn't match|2
+right edge isn't qualified|3
+bottom edge isn't qualified|4
+left edge isn't qualified|5
+top edge isn't qualified|6
+
+### Demo
+At first, let's see a silicon slice's image.
+![](images/NoError/06.bmp)
 
 
 
+then we let the program assess the pic
+
+#### Results
+![](images/results.png)
+![](images/results2.png)
 
 
 
